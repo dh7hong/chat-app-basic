@@ -66,7 +66,7 @@ io.on("connection", (socket) => {
   // Runs when client disconnects
   socket.on("disconnect", () => {
     const user = userLeave(socket.id);
-
+    console.log("user socket.id is: ", socket.id);
     if (user) {
       io.to(user.room).emit(
         "message",
@@ -82,6 +82,6 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

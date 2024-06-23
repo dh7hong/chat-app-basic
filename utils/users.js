@@ -5,7 +5,7 @@ function userJoin(id, username, room) {
   const user = { id, username, room };
 
   users.push(user);
-
+  
   return user;
 }
 
@@ -19,6 +19,16 @@ function userLeave(id) {
   const index = users.findIndex(user => user.id === id);
 
   if (index !== -1) {
+    console.log("user index is: " + index)
+    return users.splice(index, 1)[0];
+  }
+}
+
+function userLeaveByName(username) {
+  const index = users.findIndex(user => user.username === username);
+
+  if (index !== -1) {
+    console.log("user index is: " + index)
     return users.splice(index, 1)[0];
   }
 }
@@ -32,5 +42,6 @@ module.exports = {
   userJoin,
   getCurrentUser,
   userLeave,
-  getRoomUsers
+  getRoomUsers,
+  userLeaveByName
 };
